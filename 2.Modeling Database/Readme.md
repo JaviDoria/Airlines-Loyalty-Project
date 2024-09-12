@@ -12,7 +12,9 @@ Once I had the files ready, I proceeded to create the database named airlines_lo
      * Points_Accumulated:Loyalty points accumulated in the period
      * Points_Redeemed:Loyalty points redeemed in the period
      * Cost_Points_Redeemed:Dollar equivalent for points redeemed in the period in CDN
-  * customers_movements:
+       
+       
+* customers_movements:
      * Loyalty_Number:Customer's unique loyalty number
      * Country:Country of residence
      * Province:Province of residence
