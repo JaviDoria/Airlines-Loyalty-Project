@@ -1,6 +1,6 @@
 # Preparing and examining the files 
 
-# This database contains two CSV files:
+# This data base contains two CSV files:
 * Customer Flight Activity:
      * Loyalty Number:Customer's unique loyalty number
      * Year:Year of the period
