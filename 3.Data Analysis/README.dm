@@ -1,5 +1,5 @@
 
--- Counting the total number of customers by type of Loyalty Card --
+# Counting the total number of customers by type of Loyalty Card 
 
 
 | **Loyalty_Card** | **Customers** |
