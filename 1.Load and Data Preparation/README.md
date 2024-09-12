@@ -1,4 +1,4 @@
-# Preparing and examing the files 
+# Preparing and examining the files 
 
 # This database contains two CSV files:
 * Customer Flight Activity:
