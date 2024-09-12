@@ -1,6 +1,6 @@
 # Creating and modeling the Data Base:
 
-Once I had the files ready, I proceeded to create the database named airlines_loyalty. The tables will be named as follows:
+Once I had the files ready, I proceeded to create the data base named airlines_loyalty. The tables will be named as follows:
 
 
 * customers:
