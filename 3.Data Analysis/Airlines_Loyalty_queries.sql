@@ -1,46 +1,11 @@
 
 
--- Counting the total number of customers by type of Loyalty_Card --
+
+
+-- Counting the total number of customers by type of Loyalty Card --
 SELECT Loyalty_Card, COUNT(Loyalty_Number) AS Customers
 FROM customers
 GROUP BY Loyalty_Card;
-
--- Total Points_Accumulated by Marital_Status --
-SELECT Marital_Status, SUM(Points_Accumulated) AS Total_Points
-FROM customers
-JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
-GROUP BY Marital_Status;
-
--- List of customers who have taken the most flights along with the points they have redeemed, sorted by number of flights in descending order --
-SELECT customers.Loyalty_Number, SUM(Total_Flights) AS Flights, SUM(Points_Redeemed) AS Points_Redeemed
-FROM customers
-JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
-GROUP BY customers.Loyalty_Number
-ORDER BY Flights DESC;
-
--- Total list of the number of users who have registered and deregistered each year -- 
-SELECT Enrollment_Year AS Year, 
-       COUNT(Enrollment_Month) AS Total_Enrollment, 
-       COUNT(CASE WHEN Cancellation_Month > 0 THEN 1 END) AS Total_Cancellation
-FROM customers
-GROUP BY Enrollment_Year
-ORDER BY Year DESC;
-
--- Total flights by Loyalty_Card and Year --
-SELECT Loyalty_Card, Year, SUM(Total_Flights) AS Total_Flights
-FROM customers
-JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
-GROUP BY Loyalty_Card, Year
-ORDER BY Loyalty_Card, Year;
-
--- Total cost of points redeemed by Loyalty_Card and Year --
-SELECT Loyalty_Card, Year, SUM(Cost_Points_Redeemed) AS Cost_Redeemed
-FROM customers
-JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
-GROUP BY Loyalty_Card, Year
-ORDER BY Loyalty_Card, Year;
-
--------------------------------------------
 
 -- Analysis of Accumulated Points vs. Redeemed Points --
 SELECT c.Loyalty_Card, cm.Year, 
@@ -63,6 +28,19 @@ SELECT c.Gender, SUM(cm.Points_Accumulated) AS Total_Points_Accumulated,
 FROM customers c
 JOIN customers_movements cm ON c.Loyalty_Number = cm.Loyalty_Number
 GROUP BY c.Gender;
+
+-- Total Points Accumulated by Marital_Status --
+SELECT Marital_Status, SUM(Points_Accumulated) AS Total_Points
+FROM customers
+JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
+GROUP BY Marital_Status;
+
+-- Total flights by Loyalty Card and Year --
+SELECT Loyalty_Card, Year, SUM(Total_Flights) AS Total_Flights
+FROM customers
+JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
+GROUP BY Loyalty_Card, Year
+ORDER BY Loyalty_Card, Year;
 
 -- Travel Analysis by Education Level --
 SELECT c.Education, COUNT(cm.Total_Flights) AS Total_Flights, 
@@ -90,6 +68,15 @@ JOIN customers_movements cm ON c.Loyalty_Number = cm.Loyalty_Number
 WHERE c.Cancellation_Year IS NOT NULL
 GROUP BY c.Loyalty_Card, Membership_Duration_Years
 ORDER BY Membership_Duration_Years DESC;
+
+-- Total list of the number of users who have registered and deregistered each year -- 
+SELECT Enrollment_Year AS Year, 
+       COUNT(Enrollment_Month) AS Total_Enrollment, 
+       COUNT(CASE WHEN Cancellation_Month > 0 THEN 1 END) AS Total_Cancellation
+FROM customers
+GROUP BY Enrollment_Year
+ORDER BY Year DESC;
+
 
 -- Flight Frequency by Year and Month --
 SELECT cm.Year, cm.Month, 
@@ -123,6 +110,13 @@ FROM customers c
 JOIN customers_movements cm ON c.Loyalty_Number = cm.Loyalty_Number
 GROUP BY c.Enrollment_Type
 ORDER BY Total_Points_Accumulated DESC;
+
+-- Total Cost of points redeemed by Loyalty Card and Year --
+SELECT Loyalty_Card, Year, SUM(Cost_Points_Redeemed) AS Cost_Redeemed
+FROM customers
+JOIN customers_movements ON customers.Loyalty_Number = customers_movements.Loyalty_Number
+GROUP BY Loyalty_Card, Year
+ORDER BY Loyalty_Card, Year;
 
 -- Flight Frequency and Points Use by Education Level --
 SELECT c.Education, 
