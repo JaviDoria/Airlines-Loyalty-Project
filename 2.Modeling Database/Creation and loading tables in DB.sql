@@ -15,14 +15,15 @@ CREATE TABLE `customers` (
   `Education` VARCHAR(50) DEFAULT NULL,
   `Salary` INT DEFAULT 0,
   `Marital_Status` VARCHAR(50) DEFAULT NULL,
-  `Loyalty_Card` VARCHAR(20),
-  `CLV` INT DEFAULT NULL,
+  `Loyalty_Card` VARCHAR(20) NOT NULL,  
+  `CLV` FLOAT DEFAULT NULL,  
   `Enrollment_Type` VARCHAR(50),
   `Enrollment_Year` INT,
   `Enrollment_Month` INT,
-  `Cancellation_Year` INT,
-  `Cancellation_Month` INT
+  `Cancellation_Year` INT DEFAULT 0, 
+  `Cancellation_Month` INT DEFAULT 0 
 );
+
 
 -- Creating fact table customers_movements --
 
@@ -38,9 +39,10 @@ CREATE TABLE `customers_movements` (
   FOREIGN KEY (Loyalty_Number) REFERENCES customers(Loyalty_Number)
 );
 
+
 -- Loading file into dimension table --
 
-LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\DB_Airlines_customers.csv"
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Customer Loyalty History corrected.csv"
 INTO TABLE customers
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -54,7 +56,7 @@ SELECT * FROM customers;
 
 -- Loading file fact dimension table --
 
-LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\DB_Customers_movements.csv"
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Customer Flight Activity.csv"
 INTO TABLE customers_movements
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
