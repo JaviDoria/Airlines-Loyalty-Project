@@ -1,7 +1,8 @@
 # Preparing and examining the files 
 
-# This data base contains two CSV files:
-* Customer Flight Activity:
+# This database is structured around two key CSV files that capture essential information about customers' flight activities and loyalty program histories.
+
+* The Customer Flight Activity file tracks details of each customer's travel behavior and loyalty point accumulation. It includes:
      * Loyalty Number:Customer's unique loyalty number
      * Year:Year of the period
      * Month:Month of the period
@@ -10,8 +11,10 @@
      * Points Accumulated:Loyalty points accumulated in the period
      * Points Redeemed:Loyalty points redeemed in the period
      * Dollar Cost Points Redeemed:Dollar equivalent for points redeemed in the period in CDN
+ 
        
-* Customer Loyalty History:
+       
+* The Customer Loyalty History file contains demographic and membership-related data. It provides:
      * Loyalty Number:Customer's unique loyalty number
      * Country:Country of residence
      * Province:Province of residence
@@ -29,6 +32,8 @@
      * Cancellation Year:Year Member cancelled their membership
      * Cancellation Month:Month Member cancelled their membership
 
+
+> This data allows detailed analysis of customers' flight behaviors, spending, and loyalty program participation.
 
 
 
